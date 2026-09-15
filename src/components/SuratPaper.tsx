@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { SuratData } from "../lib/types";
 import { TEMPLATES, type TemplateId } from "../lib/templates";
 import { formatTanggalIndo } from "../lib/format";
@@ -68,20 +69,21 @@ function TabelMahasiswa({ data }: { data: SuratData }) {
 function DataPenelitian({ data }: { data: SuratData }) {
   const style = { gridTemplateColumns: "40mm 6mm auto" };
   return (
-    <div className="my-4">
+    <div className="my-4 grid" style={style}>
       {data.mahasiswa.map((m, i) => (
-        <div key={i} className="grid mb-3" style={style}>
+        <Fragment key={i}>
           <span>Nama</span><span>:</span><span>{m.nama}</span>
           <span>NPM</span><span>:</span><span>{m.npm}</span>
           <span>Program Studi</span><span>:</span><span>{m.prodi}</span>
-        </div>
+          {i < data.mahasiswa.length - 1 && (
+            <div className="col-span-3 h-3" />
+          )}
+        </Fragment>
       ))}
-      <div className="grid" style={style}>
-        <span>Lokasi Penelitian</span><span>:</span><span>{data.lokasiPenelitian}</span>
-        <span className="self-start">Judul Penelitian</span>
-        <span className="self-start">:</span>
-        <span className="self-start uppercase break-words">{data.judulPenelitian}</span>
-      </div>
+      <span>Lokasi Penelitian</span><span>:</span><span>{data.lokasiPenelitian}</span>
+      <span className="self-start">Judul Penelitian</span>
+      <span className="self-start">:</span>
+      <span className="self-start uppercase break-words">{data.judulPenelitian}</span>
     </div>
   );
 }
