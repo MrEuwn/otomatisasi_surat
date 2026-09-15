@@ -79,6 +79,7 @@ function DataPenelitian({ data }: { data: SuratData }) {
       <div className="grid" style={style}>
         <span>Lokasi Penelitian</span><span>:</span><span>{data.lokasiPenelitian}</span>
         <span className="self-start">Judul Penelitian</span>
+        <span className="self-start">:</span>
         <span className="self-start uppercase break-words">{data.judulPenelitian}</span>
       </div>
     </div>
